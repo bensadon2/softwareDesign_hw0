@@ -13,14 +13,17 @@ public class ConfessionReader {
      * Returns the confession associated with the ID, or empty.
      */
 
-    MyDatabase db;
+    MyDatabase db = new MyDatabase();
 
     public Optional<String> getConfession(Integer id) {
-        throw new RuntimeException("Not implemented");
-    }
 
-    public ConfessionReader() {
-        db = new MyDatabase();
+        try {
+            byte[] confession = db.get(id.toString().getBytes());
+            Optional<String> result = Optional.of(new String(confession));
+            return result;
+        } catch (InterruptedException e) {
+            return Optional.empty();
+        }
     }
 
 }
