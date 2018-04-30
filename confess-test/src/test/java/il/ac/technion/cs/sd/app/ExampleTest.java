@@ -8,8 +8,6 @@ import org.junit.rules.Timeout;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.stubbing.Answer;
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,7 +51,6 @@ public class ExampleTest {
         });
     }
 
-
     private /*static*/ ConfessionReader setupAndGetReader(String fileName) throws FileNotFoundException {
         String fileContents =
                 new Scanner(new File(ExampleTest.class.getResource(fileName).getFile())).useDelimiter("\\Z").next();
@@ -68,7 +65,6 @@ public class ExampleTest {
         assertEquals(Optional.of("small confession"), reader.getConfession(123));
     }
 
-    //
     @Test
     public void testEmpty() throws Exception {
         ConfessionReader reader = setupAndGetReader("small");
